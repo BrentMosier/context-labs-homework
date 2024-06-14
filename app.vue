@@ -1,8 +1,11 @@
 <template>
-  <div>
+  <v-app>
     <div>Hello World</div>
     <div>{{ myData?.userData }}</div>
-  </div>
+    <v-btn>
+  Button
+</v-btn>
+  </v-app>
 </template>
 
 <script setup lang="ts">
