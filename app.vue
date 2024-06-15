@@ -1,5 +1,7 @@
 <template>
   <v-app>
+    <v-container >
+      <v-col cols="12">
     <v-text-field
       label="Search"
       prepend-inner-icon="mdi-magnify"
@@ -7,9 +9,8 @@
       single-line=""
       v-model="fieldSearch"
     />
-    <div>
-      {{ fieldSearch }}
-    </div>
+  </v-col>
+  <v-col cols="12">
     <v-dialog max-width="500">
       <template v-slot:activator="{ props: activatorProps }">
         <v-list>
@@ -50,7 +51,10 @@
         </v-card>
       </template>
     </v-dialog>
+  </v-col>
+  </v-container>
   </v-app>
+  
 </template>
 
 <script setup>

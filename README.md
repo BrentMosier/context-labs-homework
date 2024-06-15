@@ -53,3 +53,12 @@ When clicking on a client name, it was meant to display the client details.
 ## Linting and Testing
 ## General Decisions and reasoning
 - Pages were not needed as this app uses a single route
+
+
+# Notes and To-Dos
+- v-html creates security issue, see if there is an alternative
+- fix fetch issue that console complains about
+- style page
+- mobile compliant
+- linting
+- testing
