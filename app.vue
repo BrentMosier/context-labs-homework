@@ -38,17 +38,15 @@
           <template v-slot:title>
             <span v-html="currentClient.name"></span>
           </template>
-          <v-card-text>
+          <template v-slot:subtitle>
             {{ currentClient.title }}
-          </v-card-text>
-          <v-card-text> OPIONAL:{{ currentClient.quote }} </v-card-text>
-          <v-card-text> OPTIONAL:{{ currentClient.nationality }} </v-card-text>
-
-          <v-card-actions>
-            <v-spacer></v-spacer>
-
-            <v-btn text="Close Dialog" @click="isActive.value = false"></v-btn>
-          </v-card-actions>
+          </template>
+          <template v-slot:append v-if="currentClient.nationality">
+            <CountryFlag :nationality="currentClient.nationality"/>
+          </template>
+          <v-card-text v-if="currentClient.quote" class="text-caption"
+            >"{{ currentClient.quote }}"</v-card-text
+          >
         </v-card>
       </template>
     </v-dialog>
@@ -79,14 +77,17 @@ watch(fieldSearch, async (newSearch) => {
   if (newSearch === "") {
     filteredClients.value = allClients.value;
   } else {
-    filteredClients.value = []
+    filteredClients.value = [];
     allClients.value.forEach((client) => {
       let clientSelectable = false;
       for (let attribute in client) {
-        typeof client[attribute] == "string" && client[attribute].toLowerCase().includes(newSearch.toLowerCase()) ? clientSelectable = true : null;
+        typeof client[attribute] == "string" &&
+        client[attribute].toLowerCase().includes(newSearch.toLowerCase())
+          ? (clientSelectable = true)
+          : null;
       }
-      if(clientSelectable){
-        filteredClients.value.push(client)
+      if (clientSelectable) {
+        filteredClients.value.push(client);
       }
     });
   }

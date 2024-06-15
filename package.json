@@ -13,6 +13,7 @@
     "@mdi/font": "^7.4.47",
     "nuxt": "^3.12.1",
     "vue": "^3.4.27",
+    "vue-country-flag-next": "^2.3.2",
     "vue-router": "^4.3.3"
   },
   "devDependencies": {
