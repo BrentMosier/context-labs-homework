@@ -59,6 +59,12 @@ Linting can be performed through
 npm run lint
 ```
 
+Testing can be performed through
+```bash
+# npm
+npm run test
+```
+
 Testing can be performed with
 
 
