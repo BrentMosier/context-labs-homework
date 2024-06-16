@@ -58,40 +58,38 @@
 </template>
 
 <script setup>
-// const { data: myData } = await useFetch("/api/clients")
+
 const allClients = ref([]);
-let currentClient = ref(null);
-const fieldSearch = ref("");
 const filteredClients = ref([]);
 
+const currentClient = ref(null);
+const fieldSearch = ref("");
+
 const getClients = async () => {
-  //update useFetch to not get console warning
-  const { data: myData } = await useFetch("/api/clients");
-  allClients.value = myData.value?.userData || [];
+  const myData  = await $fetch("/api/clients");
+  allClients.value = myData || [];
   filteredClients.value = allClients.value;
 };
 
 function loadData(myClient) {
-  currentClient = myClient;
+  currentClient.value = myClient;
 }
 
 onMounted(getClients);
 
 watch(fieldSearch, async (newSearch) => {
+  //when updating search field, compare search value against all properties in each client
   if (newSearch === "") {
     filteredClients.value = allClients.value;
   } else {
     filteredClients.value = [];
     allClients.value.forEach((client) => {
-      let clientSelectable = false;
       for (let attribute in client) {
-        typeof client[attribute] == "string" &&
-        client[attribute].toLowerCase().includes(newSearch.toLowerCase())
-          ? (clientSelectable = true)
-          : null;
-      }
-      if (clientSelectable) {
-        filteredClients.value.push(client);
+        if(typeof client[attribute] == "string" &&
+        client[attribute].toLowerCase().includes(newSearch.toLowerCase())){
+          filteredClients.value.push(client);
+          break
+        }
       }
     });
   }
