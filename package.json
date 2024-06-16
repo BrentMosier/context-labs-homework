@@ -12,17 +12,15 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "@mdi/font": "^7.4.47",
     "nuxt": "^3.12.1",
     "vue": "^3.4.27",
     "vue-country-flag-next": "^2.3.2",
     "vue-dompurify-html": "^5.1.0",
-    "vue-router": "^4.3.3"
+    "vue-router": "^4.3.3",
+    "vuetify-nuxt-module": "^0.14.1"
   },
   "devDependencies": {
     "@nuxt/eslint": "^0.3.13",
-    "eslint": "^8.57.0",
-    "vite-plugin-vuetify": "^2.0.3",
-    "vuetify": "^3.6.9"
+    "eslint": "^8.57.0"
   }
 }
