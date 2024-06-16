@@ -61,8 +61,5 @@ When clicking on a client name, it was meant to display the client details.
 When resizing the UI to fit on mobile, the search field and client list still function and appear normally. However, the client detail modal cuts off some of the text as the modal shrinks to accomodate the smaller screen size. This could be addressed most easily by having the user avatar shrink to a smaller size on mobile resolution.
 
 # Notes and To-Dos
-- v-html creates security issue, see if there is an alternative
-- style page
-- mobile compliant
 - linting
 - testing

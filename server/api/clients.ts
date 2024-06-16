@@ -1,4 +1,4 @@
 import userData from 'public/clients.json'
-export default defineEventHandler((event) =>{
+export default defineEventHandler(() =>{
     return userData 
 })

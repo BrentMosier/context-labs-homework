@@ -5,15 +5,18 @@ export default defineNuxtConfig({
   build: {
     transpile: ['vuetify'],
   },
-  modules: [
+  modules: ['@nuxt/eslint',
     (_options, nuxt) => {
       nuxt.hooks.hook('vite:extendConfig', (config) => {
         // @ts-expect-error
         config.plugins.push(vuetify({ autoImport: true }))
       })
     },
-    //...
+    
   ],
+  eslint: {
+    // options here
+  },
   vite: {
     vue: {
       template: {

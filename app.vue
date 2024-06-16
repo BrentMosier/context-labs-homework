@@ -3,17 +3,17 @@
     <v-container>
       <v-col cols="12">
         <v-text-field
+          v-model="fieldSearch"
           label="Search"
           prepend-inner-icon="mdi-magnify"
           type="input"
           variant="solo"
-          v-model="fieldSearch"
           rounded="xl"
         />
       </v-col>
       <v-col cols="12">
         <v-dialog max-width="500">
-          <template v-slot:activator="{ props: activatorProps }">
+          <template #activator="{ props: activatorProps }">
             <v-list class="rounded-xl">
               <v-list-item
                 v-for="(client, index) in filteredClients"
@@ -21,35 +21,33 @@
                 :key="index"
                 :value="client"
                 :prepend-avatar="client.avatar"
+                :subtitle="client.title"
                 @click="loadData(client)"
               >
-                <v-list-item-title>
-                  <span v-dompurify-html="client.name"></span>
-                </v-list-item-title>
-                <v-list-item-subtitle
-                  v-text="client.title"
-                ></v-list-item-subtitle>
+              <template #title>
+                <span v-dompurify-html="client.name"/>
+              </template>
               </v-list-item>
             </v-list>
           </template>
-          <template v-slot:default="{ isActive }">
+          <template #default="{ isActive }">
             <v-card rounded="xl">
-              <template v-slot:prepend>
+              <template #prepend>
                 <v-avatar size="128">
                   <v-img alt="avatar" :src="currentClient.avatar" />
                 </v-avatar>
               </template>
-              <template v-slot:title v-if="!screenIsMobile">
-                <span v-dompurify-html="currentClient.name"></span>
+              <template v-if="!screenIsMobile" #title>
+                <span v-dompurify-html="currentClient.name"/>
               </template>
-              <template v-slot:subtitle v-if="!screenIsMobile">
+              <template v-if="!screenIsMobile" #subtitle>
                 {{ currentClient.title }}
               </template>
-              <template v-slot:append v-if="currentClient.nationality">
+              <template v-if="currentClient.nationality" #append>
                 <CountryFlag :nationality="currentClient.nationality" />
               </template>
               <v-card-text v-if="screenIsMobile">
-                <span class="text-h6" v-dompurify-html="currentClient.name"></span>
+                <span v-dompurify-html="currentClient.name" class="text-h6"/>
                 <p class="text-subtitle-2 text-medium-emphasis">{{ currentClient.title }}</p>
               </v-card-text>
               <v-card-text v-if="currentClient.quote" class="text-caption"
@@ -93,7 +91,7 @@ watch(fieldSearch, async (newSearch) => {
   } else {
     filteredClients.value = [];
     allClients.value.forEach((client) => {
-      for (let attribute in client) {
+      for (const attribute in client) {
         if (
           typeof client[attribute] == "string" &&
           client[attribute].toLowerCase().includes(newSearch.toLowerCase())
