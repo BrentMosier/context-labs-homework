@@ -56,6 +56,9 @@ When clicking on a client name, it was meant to display the client details.
 ## General Decisions and reasoning
 - Pages were not needed as this app uses a single route
 
+# Potential Issues Not Addressed
+## Card data on mobile resizing
+When resizing the UI to fit on mobile, the search field and client list still function and appear normally. However, the client detail modal cuts off some of the text as the modal shrinks to accomodate the smaller screen size. This could be addressed most easily by having the user avatar shrink to a smaller size on mobile resolution.
 
 # Notes and To-Dos
 - v-html creates security issue, see if there is an alternative
