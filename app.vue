@@ -24,7 +24,7 @@
                 @click="loadData(client)"
               >
                 <v-list-item-title>
-                  <span v-html="client.name"></span>
+                  <span v-dompurify-html="client.name"></span>
                 </v-list-item-title>
                 <v-list-item-subtitle
                   v-text="client.title"
@@ -40,7 +40,7 @@
                 </v-avatar>
               </template>
               <template v-slot:title v-if="!screenIsMobile">
-                <span v-html="currentClient.name"></span>
+                <span v-dompurify-html="currentClient.name"></span>
               </template>
               <template v-slot:subtitle v-if="!screenIsMobile">
                 {{ currentClient.title }}
@@ -49,7 +49,7 @@
                 <CountryFlag :nationality="currentClient.nationality" />
               </template>
               <v-card-text v-if="screenIsMobile">
-                <span class="text-h6" v-html="currentClient.name"></span>
+                <span class="text-h6" v-dompurify-html="currentClient.name"></span>
                 <p class="text-subtitle-2 text-medium-emphasis">{{ currentClient.title }}</p>
               </v-card-text>
               <v-card-text v-if="currentClient.quote" class="text-caption"
@@ -65,6 +65,7 @@
 
 <script setup>
 import { useDisplay } from "vuetify";
+
 const allClients = ref([]);
 const filteredClients = ref([]);
 
