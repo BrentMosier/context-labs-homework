@@ -30,7 +30,7 @@
               </v-list-item>
             </v-list>
           </template>
-          <template #default="{ isActive }">
+          <template #default>
             <v-card rounded="xl">
               <template #prepend>
                 <v-avatar size="128">

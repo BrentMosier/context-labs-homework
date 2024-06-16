@@ -10,5 +10,5 @@
 import CountryFlag from "vue-country-flag-next";
 import flags from "public/flags.json"
 
-const props = defineProps({nationality:{type: String, default:""}});
+defineProps({nationality:{type: String, default:""}})
 </script>
