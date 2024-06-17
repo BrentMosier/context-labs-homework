@@ -73,7 +73,7 @@ const fieldSearch = ref("");
 const { xs: screenIsMobile } = useDisplay();
 
 const getClients = async () => {
-  const myData = await $fetch("/api/clients");
+  const myData = await $fetch("http://localhost:3000/api/clients");
   allClients.value = myData || [];
   filteredClients.value = allClients.value;
 };

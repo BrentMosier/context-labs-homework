@@ -1,6 +1,8 @@
 import withNuxt from './.nuxt/eslint.config.mjs'
 
-export default withNuxt(
+export default withNuxt({
+  ignores: ["coverage/*"]
+}
   // your custom flat configs go here, for example:
   // {
   //   files: ['**/*.ts', '**/*.tsx'],

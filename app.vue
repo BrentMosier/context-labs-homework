@@ -1,5 +1,5 @@
 <template>
   <v-app>
-    <Clients/>
+    <ClientsComponent/>
   </v-app>
 </template>

@@ -1,9 +1,9 @@
 <template>
-  <v-tooltip :text="nationality" location="bottom">
+  <v-tooltip location="bottom">
     <template #activator="{ props }">
-      <country-flag v-bind="props" :country="flags[nationality]" size="big" style="border-radius: 12px;"/>
-      <div>Testing purposes</div>
+      <country-flag id="flag-icon" v-bind="props" :country="flags[nationality]" size="big" style="border-radius: 12px;"/>
     </template>
+    <span id="tooltip-text">{{ nationality }}</span>
   </v-tooltip>
 </template>
 
