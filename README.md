@@ -71,9 +71,10 @@ Test coverage can be measured with
 npm run coverage
 ```
 
-Test coverage currently sits at 87.5%
+Test coverage currently sits at 81.62%
 
-# Potential Issues Not Addressed
+# Assumptions
+deprecated data is not expressley indicated, read it as data that was optional, opted to have code take care of only displaying that data when present
 
-# Notes and To-Dos
-- testing
+picked testing and linter based on them being the default within nuxt
+

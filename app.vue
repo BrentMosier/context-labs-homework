@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app class="bg-background">
     <ClientsComponent/>
   </v-app>
 </template>

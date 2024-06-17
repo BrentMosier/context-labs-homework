@@ -8,10 +8,13 @@
         type="input"
         variant="solo"
         rounded="xl"
+        bg-color="surface"
+        clearable
+        @keyup.esc="fieldSearch = ''"
       />
     </v-col>
     <v-col cols="12">
-      <ClientList :filtered-clients="filteredClients"/>
+      <ClientList :filtered-clients="filteredClients" :is-loading="isLoading"/>
     </v-col>
   </v-container>
 </template>
@@ -20,18 +23,25 @@
 const allClients = ref([]);
 const filteredClients = ref([]);
 const fieldSearch = ref("");
+const isLoading = ref(true)
 
+//Retrieve client list from api endpoint
+//store results in allClients for future reference and filteredClients for data initialization
+//set loading to false to indicate app is ready for interaction
 const getClients = async () => {
   const myData = await $fetch("http://localhost:3000/api/clients");
   allClients.value = myData || [];
   filteredClients.value = allClients.value;
+  isLoading.value = false;
 };
 
 onMounted(getClients);
 
+// Function to run when fieldSearch value is updated
+// compares value of search against all properties in each client
+// returns clients containing a property value that matches search string
 watch(fieldSearch, async (newSearch) => {
-  //when updating search field, compare search value against all properties in each client
-  if (newSearch === "") {
+  if (newSearch === "" || newSearch === null) {
     filteredClients.value = allClients.value;
   } else {
     filteredClients.value = [];
