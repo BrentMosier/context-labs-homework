@@ -65,8 +65,13 @@ Testing can be performed through
 npm run test
 ```
 
-Testing can be performed with
+Test coverage can be measured with
+```bash
+# npm
+npm run coverage
+```
 
+Test coverage currently sits at 87.5%
 
 # Potential Issues Not Addressed
 

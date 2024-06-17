@@ -2,7 +2,7 @@ import {mountSuspended} from '@nuxt/test-utils/runtime'
 import {it, expect, describe } from 'vitest'
 import {CountryFlagDisplay} from '#components'
 
-describe('countryFlagDisplay', () => { 
+describe('Country Flag Display ', () => { 
     it('1. Checks tooltip text', async () => {
         const component = await mountSuspended(CountryFlagDisplay, {props:{nationality:'France'}});
         component.trigger('mouseover')

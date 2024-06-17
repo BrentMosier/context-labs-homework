@@ -6,6 +6,6 @@ export default defineVitestConfig({
     environment: 'nuxt',
     coverage: {
           provider: 'v8'
-    },
+    }
   }
 })
