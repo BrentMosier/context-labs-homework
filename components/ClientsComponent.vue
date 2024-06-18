@@ -20,6 +20,7 @@
 </template>
 
 <script setup>
+import { getClients } from '~/assets/util.js';
 const allClients = ref([]);
 const filteredClients = ref([]);
 const fieldSearch = ref("");
@@ -28,14 +29,12 @@ const isLoading = ref(true)
 //Retrieve client list from api endpoint
 //store results in allClients for future reference and filteredClients for data initialization
 //set loading to false to indicate app is ready for interaction
-const getClients = async () => {
-  const myData = await $fetch("http://localhost:3000/api/clients");
-  allClients.value = myData || [];
-  filteredClients.value = allClients.value;
-  isLoading.value = false;
-};
-
-onMounted(getClients);
+onMounted(async () => {
+    const clients = await getClients();
+    allClients.value = clients;
+    filteredClients.value = allClients.value;
+    isLoading.value = false;
+});
 
 // Function to run when fieldSearch value is updated
 // compares value of search against all properties in each client
