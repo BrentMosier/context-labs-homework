@@ -47,7 +47,7 @@
         </v-card>
       </template>
     </v-dialog>
-    <v-list v-else class="rounded-xl text-center" bg-color="surface">
+    <v-list v-else class="rounded-xl text-center" bg-color="surface" elevation="1">
       <v-list-item v-if="isLoading">
         <v-skeleton-loader type="list-item-avatar"/>
       </v-list-item>
